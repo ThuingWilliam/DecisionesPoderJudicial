@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+/* ============================================
+   MODERN 2026 DESIGN SYSTEM - HIGH IMPACT
+   ============================================ */
+
+:root {
+    /* Core Palette - Corporate Light */
+    --bg-dark: #f8fafc;
+    /* Slate 50 */
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --bg-glass: rgba(255, 255, 255, 0.7);
+
+    --primary-glow: #4f46e5;
+    --secondary-glow: #0ea5e9;
+    /* Sky 500 */
+    --accent-glow: #06b6d4;
+
+    --text-main: #0f172a;
+    /* Slate 900 */
+    --text-muted: #64748b;
+    /* Slate 500 */
+    --border-light: rgba(148, 163, 184, 0.2);
+    /* Slate 400 with opacity */
+
+    /* Gradients */
+    --gradient-text: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+
+    /* Animations */
+    --ease-elastic: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Outfit', sans-serif;
+    color: #0f172a;
+}
+
+/* --- Animated Background (Subtle Light) --- */
+.mesh-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 15% 50%, rgba(79, 70, 229, 0.05), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(14, 165, 233, 0.05), transparent 25%);
+    background-color: #f8fafc;
+    filter: blur(60px);
+}
+
+/* --- Glassmorphism Advanced (Clean White) --- */
+.glass-panel {
+    background: var(--bg-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.glass-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-2px);
+    border-color: #cbd5e1;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+}
+
+/* --- Typography & Text --- */
+.text-gradient {
+    background: linear-gradient(to right, #818cf8, #e879f9, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+}
+
+/* --- Input Fields --- */
+.input-modern {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-light);
+    color: var(--text-main);
+    transition: all 0.3s ease;
+}
+
+.input-modern:focus {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: var(--primary-glow);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    outline: none;
+}
+
+/* --- Buttons --- */
+.btn-glow {
+    background: var(--gradient-primary);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.btn-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+}
+
+.btn-glow:hover::before {
+    opacity: 1;
+}
+
+/* --- Skeleton Loading --- */
+.skeleton {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* --- Custom Scrollbar --- */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* --- Utilities --- */
+.animate-enter {
+    animation: fadeScale 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.delay-100 {
+    animation-delay: 100ms;
+}
+
+.delay-200 {
+    animation-delay: 200ms;
+}

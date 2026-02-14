@@ -1,0 +1,51 @@
+{
+  "nuc_consultado": "2025-0150227",
+  "fecha_consulta": "2026-02-14T12:26:36.883933",
+  "respuesta_api": {
+    "paginaActual": 1,
+    "totalPaginas": 1,
+    "registrosPorPagina": 20,
+    "totalRegistros": 3,
+    "datos": [
+      {
+        "asunto": "ACUSACIÓN",
+        "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+        "nuc": "2025-0150227",
+        "numeroDecision": "589-2026-SRES-00054",
+        "fechaDecision": "2026-01-15T00:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/%2854%29 Apertura a Juicio Victor Melo Matos %28arts. 379 y 385 CPD%29-1769195490247_Signed_1769207681.pdf",
+        "materia": "PENAL",
+        "sala": "JUZGADO DE LA INSTRUCCION DE BARAHONA",
+        "tribunal": "JUZGADO DE LA INSTRUCCION DE BARAHONA",
+        "tipoFallo": "Apertura a Juicio",
+        "tipoDocumento": "Resolución"
+      },
+      {
+        "asunto": "REVISIÓN DE MEDIDA DE COERCIÓN",
+        "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+        "nuc": "2025-0150227",
+        "numeroDecision": "589-2026-SRES-00030                               ",
+        "fechaDecision": "2026-01-14T00:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/%2800030%29 Revision MC Modificada Victor Melo Matos %28Art. 379 y 385 CPD%29Mv. Mg. FATIMA-1769532956599_Signed_1769544511.pdf",
+        "materia": "PENAL",
+        "sala": "JUZGADO DE LA INSTRUCCION DE BARAHONA",
+        "tribunal": "JUZGADO DE LA INSTRUCCION DE BARAHONA",
+        "tipoFallo": "Modifica",
+        "tipoDocumento": "Resolución"
+      },
+      {
+        "asunto": "MEDIDA DE COERCIÓN",
+        "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+        "nuc": "2025-0150227",
+        "numeroDecision": "589-01-2025-SRMC-00776",
+        "fechaDecision": "2025-06-21T00:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/6272f2cc-a9ca-428c-9236-393a0711dcc7_20250624124422008_Signed_1750792978.pdf",
+        "materia": "PENAL",
+        "sala": "OFICINA JUDICIAL DE SERVICIOS DE ATENCION PERMANENTE DE BARAHONA",
+        "tribunal": "JUZGADO DE LA INSTRUCCION DE BARAHONA",
+        "tipoFallo": "Acoge",
+        "tipoDocumento": "Resolución"
+      }
+    ]
+  }
+}

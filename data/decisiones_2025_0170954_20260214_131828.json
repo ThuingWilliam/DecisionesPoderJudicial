@@ -1,0 +1,51 @@
+{
+  "nuc_consultado": "2025-0170954",
+  "fecha_consulta": "2026-02-14T13:18:28.378445",
+  "respuesta_api": {
+    "paginaActual": 1,
+    "totalPaginas": 1,
+    "registrosPorPagina": 12,
+    "totalRegistros": 3,
+    "datos": [
+      {
+        "asunto": "CONTROL DE PLAZO DE LA INVESTIGACION DEL MP",
+        "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+        "nuc": "2025-0170954",
+        "numeroDecision": "579-2025-SREV-00568    ",
+        "fechaDecision": "2025-11-24T00:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/579-2025-SREV-00568 SANTIAGO BAUTISTA-1768313015917_Signed_1768327199.pdf",
+        "materia": "PENAL",
+        "sala": "SEGUNDO JUZGADO DE LA INSTRUCCION DE SANTO DOMINGO",
+        "tribunal": "JUZGADO DE LA INSTRUCCION DE SANTO DOMINGO",
+        "tipoFallo": "Dejada sin efecto",
+        "tipoDocumento": "Resolución"
+      },
+      {
+        "asunto": "REVISIÓN DE MEDIDA DE COERCIÓN",
+        "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+        "nuc": "2025-0170954",
+        "numeroDecision": "579-2025-SREV-00387",
+        "fechaDecision": "2025-08-18T00:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/Resolucion penal num. 579-2025-SREV-00387 a cargo de Santiago Batista-1756907722151_Signed_1756933807.pdf",
+        "materia": "PENAL",
+        "sala": "SEGUNDO JUZGADO DE LA INSTRUCCION DE SANTO DOMINGO",
+        "tribunal": "JUZGADO DE LA INSTRUCCION DE SANTO DOMINGO",
+        "tipoFallo": "Dejada sin efecto",
+        "tipoDocumento": "Resolución"
+      },
+      {
+        "asunto": "MEDIDA DE COERCIÓN",
+        "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+        "nuc": "2025-0170954",
+        "numeroDecision": "530-2025-SMEC-01811",
+        "fechaDecision": "2025-07-17T04:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/8d3a79b8-6d28-4b7f-943f-650d6e044144_20250722144840125_Signed_1753272059.pdf",
+        "materia": "PENAL",
+        "sala": "OFICINA JUDICIAL DE SERVICIOS DE ATENCION PERMANENTE DE SANTO DOMINGO SDE",
+        "tribunal": "JUZGADO DE LA INSTRUCCION DE SANTO DOMINGO",
+        "tipoFallo": "Prisión Preventiva",
+        "tipoDocumento": "Resolución"
+      }
+    ]
+  }
+}

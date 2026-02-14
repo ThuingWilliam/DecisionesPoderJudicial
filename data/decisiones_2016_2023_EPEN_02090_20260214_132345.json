@@ -1,0 +1,25 @@
+{
+  "nuc_consultado": "2016-2023-EPEN-02090",
+  "fecha_consulta": "2026-02-14T13:23:45.636126",
+  "respuesta_api": {
+    "paginaActual": 1,
+    "totalPaginas": 1,
+    "registrosPorPagina": 12,
+    "totalRegistros": 1,
+    "datos": [
+      {
+        "asunto": "JUICIO DE FONDO",
+        "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+        "nuc": "2016-2023-EPEN-02090",
+        "numeroDecision": "371-03-2024-SSEN-00308",
+        "fechaDecision": "2024-12-09T00:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/6e25ac7b-9a8a-4289-9f8e-2ef3f258eb3f_20241004161408006_Signed_1728317076.pdf",
+        "materia": "PENAL",
+        "sala": "PRIMER TRIBUNAL COLEGIADO DE LA CAMARA PENAL DEL JUZGADO DE PRIMERA INSTANCIA DE SANTIAGO",
+        "tribunal": "CAMARA PENAL DEL JUZGADO DE PRIMERA INSTANCIA DE SANTIAGO",
+        "tipoFallo": "Absuelve",
+        "tipoDocumento": "Sentencia Definitiva"
+      }
+    ]
+  }
+}

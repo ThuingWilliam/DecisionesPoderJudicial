@@ -1,0 +1,25 @@
+{
+  "nuc_consultado": "199-2020-ELAB-00094",
+  "fecha_consulta": "2026-02-14T12:53:27.972442",
+  "respuesta_api": {
+    "paginaActual": 1,
+    "totalPaginas": 1,
+    "registrosPorPagina": 20,
+    "totalRegistros": 1,
+    "datos": [
+      {
+        "asunto": "RECURSO DE APELACIÓN",
+        "categoriaTribunal": "CORTES DE APELACIÓN Y EQUIVALENTES",
+        "nuc": "199-2020-ELAB-00094",
+        "numeroDecision": "135-2024",
+        "fechaDecision": "2024-05-23T04:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/9480875a-db44-4506-a3cd-70dcab58671d_20240523145606018_Signed_1717598618.pdf",
+        "materia": "TRABAJO",
+        "sala": "CORTE DE TRABAJO DE SAN PEDRO DE MACORIS",
+        "tribunal": "CORTE DE TRABAJO DE SAN PEDRO DE MACORIS",
+        "tipoFallo": "Confirma",
+        "tipoDocumento": "Sentencia Definitiva"
+      }
+    ]
+  }
+}

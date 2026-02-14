@@ -1,0 +1,64 @@
+{
+  "nuc_consultado": "2024-0024085",
+  "fecha_consulta": "2026-02-14T12:57:44.150695",
+  "respuesta_api": {
+    "paginaActual": 1,
+    "totalPaginas": 1,
+    "registrosPorPagina": 20,
+    "totalRegistros": 4,
+    "datos": [
+      {
+        "asunto": "ACCIÓN PENAL PÚBLICA",
+        "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+        "nuc": "2024-0024085",
+        "numeroDecision": "040-2024-SSEN-00156",
+        "fechaDecision": "2024-10-17T04:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/ba5b94cc-ee08-40f5-ae25-b88d9fd2199d_20241218162811736_Signed_1734608977.pdf",
+        "materia": "PENAL",
+        "sala": "SEGUNDA SALA DE LA CAMARA PENAL DEL JUZGADO DE PRIMERA INSTANCIA DEL DISTRITO NACIONAL",
+        "tribunal": "CAMARA PENAL DEL JUZGADO DE PRIMERA INSTANCIA DEL DISTRITO NACIONAL",
+        "tipoFallo": "Condena",
+        "tipoDocumento": "Sentencia Definitiva"
+      },
+      {
+        "asunto": "ACUSACIÓN",
+        "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+        "nuc": "2024-0024085",
+        "numeroDecision": "061-2024-SACO-00455",
+        "fechaDecision": "2024-07-10T04:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/8f59dc7d-01d8-4662-93a8-6da56086496b_20240725142611395_Signed_1721995794.pdf",
+        "materia": "PENAL",
+        "sala": "QUINTO JUZGADO DE LA INSTRUCCIÓN DEL DISTRITO NACIONAL",
+        "tribunal": "JUZGADO DE LA INSTRUCCION DEL DISTRITO NACIONAL",
+        "tipoFallo": "Apertura a Juicio",
+        "tipoDocumento": "Resolución"
+      },
+      {
+        "asunto": "REVISIÓN DE MEDIDA DE COERCIÓN",
+        "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+        "nuc": "2024-0024085",
+        "numeroDecision": "058-2024-SROB-00041",
+        "fechaDecision": "2024-05-09T00:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/b8501f5e-ca35-4f84-8a64-5dd511b0ec29_20240514125712837_Signed_1715887667.pdf",
+        "materia": "PENAL",
+        "sala": "SEGUNDO JUZGADO DE LA INSTRUCCIÓN DEL DISTRITO NACIONAL",
+        "tribunal": "JUZGADO DE LA INSTRUCCION DEL DISTRITO NACIONAL",
+        "tipoFallo": "Dejada sin efecto",
+        "tipoDocumento": "Resolución"
+      },
+      {
+        "asunto": "RECURSO DE APELACIÓN",
+        "categoriaTribunal": "CORTES DE APELACIÓN Y EQUIVALENTES",
+        "nuc": "2024-0024085",
+        "numeroDecision": "502-2024-SRES-00125",
+        "fechaDecision": "2024-04-08T04:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/152762cd-d7c7-42ba-baf3-f2f957d59d53_20240501155131204_Signed_1714672657.pdf",
+        "materia": "PENAL",
+        "sala": "SEGUNDA SALA DE LA CAMARA PENAL DE LA CORTE DE APELACION DEL DISTRITO NACIONAL",
+        "tribunal": "CAMARA PENAL DE LA CORTE DE APELACION DEL DISTRITO NACIONAL",
+        "tipoFallo": "Rechaza",
+        "tipoDocumento": "Resolución"
+      }
+    ]
+  }
+}

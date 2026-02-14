@@ -1,0 +1,38 @@
+{
+  "nuc_consultado": "4020-2022-EPEN-01209",
+  "fecha_consulta": "2026-02-14T13:22:17.400194",
+  "respuesta_api": {
+    "paginaActual": 1,
+    "totalPaginas": 1,
+    "registrosPorPagina": 12,
+    "totalRegistros": 2,
+    "datos": [
+      {
+        "asunto": "RECURSO DE CASACIÓN",
+        "categoriaTribunal": "SUPREMA CORTE DE JUSTICIA",
+        "nuc": "4020-2022-EPEN-01209",
+        "numeroDecision": "Sentencia núm. SCJ-SS-25-1354 ",
+        "fechaDecision": "2025-10-31T00:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/4020-2022-EPEN-01209_Willy_W._Santos_P_Y_COMP_signed-1766161247643.pdf",
+        "materia": "PENAL",
+        "sala": "SEGUNDA SALA DE LA SUPREMA CORTE DE JUSTICIA",
+        "tribunal": "SUPREMA CORTE DE JUSTICIA",
+        "tipoFallo": "Rechaza",
+        "tipoDocumento": "Sentencia Definitiva"
+      },
+      {
+        "asunto": "RECURSO DE CASACIÓN",
+        "categoriaTribunal": "SUPREMA CORTE DE JUSTICIA",
+        "nuc": "4020-2022-EPEN-01209",
+        "numeroDecision": "001-022-2025-SRES-00696",
+        "fechaDecision": "2025-04-21T04:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/10784d06-c3e5-450c-83b8-5a85ebacc740_20250520164843684.pdf",
+        "materia": "PENAL",
+        "sala": "SEGUNDA SALA DE LA SUPREMA CORTE DE JUSTICIA",
+        "tribunal": "SUPREMA CORTE DE JUSTICIA",
+        "tipoFallo": "Admisible",
+        "tipoDocumento": "Resolución"
+      }
+    ]
+  }
+}

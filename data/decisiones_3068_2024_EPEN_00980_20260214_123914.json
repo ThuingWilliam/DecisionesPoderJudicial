@@ -1,0 +1,77 @@
+{
+  "nuc_consultado": "3068-2024-EPEN-00980",
+  "fecha_consulta": "2026-02-14T12:39:14.263563",
+  "respuesta_api": {
+    "paginaActual": 1,
+    "totalPaginas": 1,
+    "registrosPorPagina": 20,
+    "totalRegistros": 5,
+    "datos": [
+      {
+        "asunto": "JUICIO DE FONDO",
+        "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+        "nuc": "3068-2024-EPEN-00980",
+        "numeroDecision": "107-02-2025-SSEN-00050",
+        "fechaDecision": "2025-11-14T00:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/%2850%29 Sentencia Absolutoria Wender Feliz Alcantara %28a%29 WanderJ Maicel Feliz Alcantara y comp. %28379J 384 y 385 CPD%29 %28Mitiva-WVDS-Lectuta 18-11-2025-1763648610259_Signed_1763725637.pdf",
+        "materia": "PENAL",
+        "sala": "TRIBUNAL COLEGIADO DE LA CAMARA PENAL DEL JUZGADO DE PRIMERA INSTANCIA DE BARAHONA",
+        "tribunal": "CAMARA PENAL DEL JUZGADO DE PRIMERA INSTANCIA DE BARAHONA",
+        "tipoFallo": "Absuelve",
+        "tipoDocumento": "Sentencia Definitiva"
+      },
+      {
+        "asunto": "RECURSO DE APELACION",
+        "categoriaTribunal": "CORTES DE APELACIÓN Y EQUIVALENTES",
+        "nuc": "3068-2024-EPEN-00980",
+        "numeroDecision": "Resolución num. 102-2025-RPEN-00051",
+        "fechaDecision": "2025-06-06T00:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/4b589e8e-f131-4d45-9caa-4e6c232599db_20250606082638997_Signed_1749236050.pdf",
+        "materia": "PENAL",
+        "sala": "CAMARA PENAL DE LA CORTE DE APELACION DE BARAHONA",
+        "tribunal": "CAMARA PENAL DE LA CORTE DE APELACION DE BARAHONA",
+        "tipoFallo": "Confirma",
+        "tipoDocumento": "Resolución"
+      },
+      {
+        "asunto": "ACUSACIÓN",
+        "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+        "nuc": "3068-2024-EPEN-00980",
+        "numeroDecision": "589-2025-SRES-00122",
+        "fechaDecision": "2025-02-13T00:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/7fd34d1c-dfdc-462d-aaef-5724614e8412_20250220112007810_Signed_1740082282.pdf",
+        "materia": "PENAL",
+        "sala": "JUZGADO DE LA INSTRUCCION DE BARAHONA",
+        "tribunal": "JUZGADO DE LA INSTRUCCION DE BARAHONA",
+        "tipoFallo": "Apertura a Juicio",
+        "tipoDocumento": "Resolución"
+      },
+      {
+        "asunto": "REVISIÓN DE MEDIDA DE COERCIÓN",
+        "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+        "nuc": "3068-2024-EPEN-00980",
+        "numeroDecision": "589-2024-SRES-00934",
+        "fechaDecision": "2024-11-06T04:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/f7c05518-fcf1-4b05-b44c-bada6f42f140_20241128120616703_Signed_1732811594.pdf",
+        "materia": "PENAL",
+        "sala": "JUZGADO DE LA INSTRUCCION DE BARAHONA",
+        "tribunal": "JUZGADO DE LA INSTRUCCION DE BARAHONA",
+        "tipoFallo": "Rechaza",
+        "tipoDocumento": "Resolución"
+      },
+      {
+        "asunto": "MEDIDA DE COERCIÓN",
+        "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+        "nuc": "3068-2024-EPEN-00980",
+        "numeroDecision": "589-01-2024-SRMC-00897",
+        "fechaDecision": "2024-07-09T04:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/457e58d4-2dc4-4fb5-bed5-6b55ef6336d5_20240815174507695_Signed_1723761612.pdf",
+        "materia": "PENAL",
+        "sala": "OFICINA JUDICIAL DE SERVICIOS DE ATENCION PERMANENTE DE BARAHONA",
+        "tribunal": "JUZGADO DE LA INSTRUCCION DE BARAHONA",
+        "tipoFallo": "Acoge",
+        "tipoDocumento": "Resolución"
+      }
+    ]
+  }
+}

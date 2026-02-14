@@ -1,0 +1,90 @@
+{
+  "nuc_consultado": "2016-2023-EPEN-03014",
+  "fecha_consulta": "2026-02-14T16:14:55.042853",
+  "respuesta_api": {
+    "paginaActual": 1,
+    "totalPaginas": 1,
+    "registrosPorPagina": 15,
+    "totalRegistros": 6,
+    "datos": [
+      {
+        "asunto": "REVISIÓN MEDIDA DE COERCIÓN",
+        "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+        "nuc": "2016-2023-EPEN-03014",
+        "numeroDecision": "371-04-2026-SRES-00019",
+        "fechaDecision": "2026-01-27T00:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/Res. no. 371-04-2026-SRES-00019 d-f 27-01-2026 - Wander de los Santos Arno - RMC Inadmisible-1769545515902_Signed_1769629650.pdf",
+        "materia": "PENAL",
+        "sala": "SEGUNDO TRIBUNAL COLEGIADO DE LA CAMARA PENAL DEL JUZGADO DE PRIMERA INSTANCIA DE SANTIAGO",
+        "tribunal": "CAMARA PENAL DEL JUZGADO DE PRIMERA INSTANCIA DE SANTIAGO",
+        "tipoFallo": "Inadmisible",
+        "tipoDocumento": "Resolución"
+      },
+      {
+        "asunto": "REVISIÓN MEDIDA DE COERCIÓN",
+        "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+        "nuc": "2016-2023-EPEN-03014",
+        "numeroDecision": "1461-2025-AUT-00076",
+        "fechaDecision": "2025-09-25T00:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/Auto num. 00076-2025 d-f 25-09-2025 - Felix Enmanuel Nina Mendoza - RMC Sin Objeto %28Se conocio preliminar%29 - Mag. Cirilo Salomon Sanchez-1758815689165_Signed_1758892087.pdf",
+        "materia": "PENAL",
+        "sala": "QUINTO JUZGADO DE LA INSTRUCCIÓN DE SANTIAGO",
+        "tribunal": "JUZGADO DE LA INSTRUCCION DE SANTIAGO",
+        "tipoFallo": "Inadmisible",
+        "tipoDocumento": "Resolución"
+      },
+      {
+        "asunto": "REVISIÓN DE MEDIDA DE COERCIÓN",
+        "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+        "nuc": "2016-2023-EPEN-03014",
+        "numeroDecision": "1461-2025-SRES-00015",
+        "fechaDecision": "2025-02-10T04:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/b1646107-0c2b-4018-904a-56696f4f4efd_20250211111046606_Signed_1739292879.pdf",
+        "materia": "PENAL",
+        "sala": "QUINTO JUZGADO DE LA INSTRUCCIÓN DE SANTIAGO",
+        "tribunal": "JUZGADO DE LA INSTRUCCION DE SANTIAGO",
+        "tipoFallo": "Desierta",
+        "tipoDocumento": "Resolución"
+      },
+      {
+        "asunto": "ACUSACIÓN",
+        "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+        "nuc": "2016-2023-EPEN-03014",
+        "numeroDecision": "1461-2025-SRES-00032",
+        "fechaDecision": "2025-02-10T00:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/53484829-84ff-46f0-b561-593c6c397b64_20250217132515420_Signed_1739821779.pdf",
+        "materia": "PENAL",
+        "sala": "QUINTO JUZGADO DE LA INSTRUCCIÓN DE SANTIAGO",
+        "tribunal": "JUZGADO DE LA INSTRUCCION DE SANTIAGO",
+        "tipoFallo": "Apertura a Juicio",
+        "tipoDocumento": "Resolución"
+      },
+      {
+        "asunto": "REVISIÓN DE MEDIDA DE COERCIÓN",
+        "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+        "nuc": "2016-2023-EPEN-03014",
+        "numeroDecision": "00436-2024",
+        "fechaDecision": "2024-05-03T00:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/3eb64c64-764c-4690-82ce-889daf8ad5e6_20240508092142270_Signed_1715180763.pdf",
+        "materia": "PENAL",
+        "sala": "QUINTO JUZGADO DE LA INSTRUCCIÓN DE SANTIAGO",
+        "tribunal": "JUZGADO DE LA INSTRUCCION DE SANTIAGO",
+        "tipoFallo": "Dejada sin efecto",
+        "tipoDocumento": "Resolución"
+      },
+      {
+        "asunto": "SOLICITUD DE CERTIFICACIÓN DE NO RECURSO",
+        "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+        "nuc": "2016-2023-EPEN-03014",
+        "numeroDecision": "00196-2024",
+        "fechaDecision": "2024-01-27T04:00:00",
+        "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/be93dba3-35d1-4efe-9785-c6c4972663ec_20241119092505155.pdf",
+        "materia": "PENAL",
+        "sala": "OFICINA JUDICIAL DE SERVICIOS DE ATENCION PERMANENTE DE SANTIAGO",
+        "tribunal": "JUZGADO DE LA INSTRUCCION DE SANTIAGO",
+        "tipoFallo": "Prisión Preventiva",
+        "tipoDocumento": "Resolución"
+      }
+    ]
+  }
+}
