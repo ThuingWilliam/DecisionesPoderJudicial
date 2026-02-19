@@ -1,202 +1,370 @@
-// Variables globales
-let datosActuales = null;
+// ============================================================
+//  LexDigital - app.js
+//  Maneja búsqueda por NUC en tres APIs del Poder Judicial
+// ============================================================
+
 let nucActual = '';
 
-/**
- * Función principal para búsqueda
- */
+// ---- Tabs ----
+function showTab(name, btn) {
+    // Panels
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    // Buttons
+    document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('active');
+        b.classList.add('bg-white', 'text-slate-600');
+    });
+    btn.classList.add('active');
+    btn.classList.remove('bg-white', 'text-slate-600');
+}
+
+// ---- Búsqueda principal ----
 async function buscar(pagina = 1) {
-    // Referencias DOM
     const nucInput = document.getElementById('nucInput');
-    const skeleton = document.getElementById('skeletonLoader'); // Nuevo Skeleton
+    const skeleton = document.getElementById('skeletonLoader');
     const errorDiv = document.getElementById('error');
-    const errorMsg = document.getElementById('errorMsg');
     const resultados = document.getElementById('resultados');
     const sinResultados = document.getElementById('sinResultados');
     const btnBuscar = document.getElementById('btnBuscar');
     const debugContent = document.getElementById('debug-content');
 
-    if (!nucInput) return; // Seguridad básica
+    if (!nucInput) return;
 
     const nuc = nucInput.value.trim();
-    if (!nuc) {
-        mostrarError('Por favor escribe un NUC para buscar.');
-        return;
-    }
+    if (!nuc) { mostrarError('Por favor escribe un NUC para buscar.'); return; }
 
     nucActual = nuc;
 
-    // --- ESTADO: CARGANDO ---
     // Ocultar todo lo previo
     resultados.classList.add('hidden');
     sinResultados.classList.add('hidden');
     errorDiv.classList.add('hidden');
-
-    // Mostrar Skeleton Loader
     skeleton.classList.remove('hidden');
-    // skeleton.classList.add('grid'); // REMOVED: Skeleton is now a block/stack
 
-    // UI Botón
     btnBuscar.disabled = true;
-    const originalBtnContent = btnBuscar.innerHTML;
     btnBuscar.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>';
     btnBuscar.classList.add('opacity-80', 'cursor-wait');
 
-    // Debug log
-    if (debugContent) debugContent.innerHTML += `<br>> Iniciando consulta para NUC: ${nuc}...`;
+    if (debugContent) debugContent.innerHTML += `<br>> Consulta NUC: ${nuc} (pág. ${pagina})...`;
 
     try {
         const response = await fetch('/api/buscar', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ nuc: nuc, pagina: pagina, registros: 15 }) // 15 para tabla
+            body: JSON.stringify({ nuc, pagina, registros: 15 })
         });
-
         const data = await response.json();
 
-        // Validar respuesta
-        if (!response.ok || (data.debug && data.debug.status_code !== 200)) {
-            throw new Error(data.error || 'Error del servidor remoto');
+        if (!response.ok) {
+            throw new Error(data.error || 'Error del servidor');
         }
 
-        datosActuales = data.data;
+        // Debug
+        if (debugContent) {
+            const { decisiones_status, casos_status, audiencias_status } = data.debug || {};
+            debugContent.innerHTML += `<br>> decisiones:${decisiones_status} | casos:${casos_status} | audiencias:${audiencias_status}`;
+        }
 
-        // Simular un pequeño delay para que se aprecie la animación (opcional, UX)
-        // await new Promise(r => setTimeout(r, 800)); 
+        // Renderizar las tres secciones
+        renderDecisiones(data.decisiones);
+        renderCasos(data.casos);
+        renderAudiencias(data.audiencias);
 
-        mostrarResultadosModernos(data.data);
+        // Actualizar NUC badge
+        const nucBadge = document.getElementById('nucBadge');
+        if (nucBadge) nucBadge.textContent = nuc;
 
-        if (debugContent) debugContent.innerHTML += `<br>> <span class="text-green-400">Éxito: ${data.data.totalRegistros} registros.</span>`;
+        // Resumen totales
+        const totalDec = (data.decisiones && data.decisiones.totalRegistros) || 0;
+        const totalCas = (data.casos && data.casos.totalRegistros) || (data.casos && Array.isArray(data.casos) && data.casos.length) || 0;
+        const totalAud = (data.audiencias && data.audiencias.totalRegistros) || (data.audiencias && Array.isArray(data.audiencias) && data.audiencias.length) || 0;
+
+        if (document.getElementById('resumenTotal')) {
+            document.getElementById('resumenTotal').textContent =
+                `${totalDec} decisiones · ${totalCas} casos · ${totalAud} audiencias`;
+        }
+
+        // Verificar si hay al menos algo
+        if (totalDec === 0 && totalCas === 0 && totalAud === 0) {
+            sinResultados.classList.remove('hidden');
+        } else {
+            resultados.classList.remove('hidden');
+        }
 
     } catch (error) {
         console.error(error);
         mostrarError(error.message);
-        if (debugContent) debugContent.innerHTML += `<br>> <span class="text-red-400">Error: ${error.message}</span>`;
+        if (debugContent) debugContent.innerHTML += `<br>> <span style="color:red">Error: ${error.message}</span>`;
     } finally {
-        // --- ESTADO: FINALIZADO ---
         skeleton.classList.add('hidden');
-        // skeleton.classList.remove('grid'); // REMOVED
-
         btnBuscar.disabled = false;
         btnBuscar.innerHTML = '<span>Explorar</span>';
         btnBuscar.classList.remove('opacity-80', 'cursor-wait');
     }
 }
 
-/**
- * Renderiza TABLA Moderna (Corporate Style)
- */
-function mostrarResultadosModernos(data) {
-    const datos = data.datos || [];
-    const tbody = document.getElementById('tableBody');
+// ============================================================
+//  Renderizadores por sección
+// ============================================================
 
-    // Validar si hay datos
-    if (datos.length === 0) {
-        document.getElementById('sinResultados').classList.remove('hidden');
+function renderDecisiones(data) {
+    const tbody = document.getElementById('tabla-decisiones');
+    const empty = document.getElementById('empty-decisiones');
+    const errDiv = document.getElementById('error-decisiones');
+    const errMsg = document.getElementById('error-decisiones-msg');
+    const cntEl = document.getElementById('cnt-decisiones');
+
+    tbody.innerHTML = '';
+    empty.classList.add('hidden');
+    errDiv.classList.add('hidden');
+
+    if (!data || data.error) {
+        errDiv.classList.remove('hidden');
+        if (errMsg) errMsg.textContent = data && data.error ? data.error : 'La API no devolvió una respuesta válida.';
+        if (cntEl) cntEl.textContent = '0';
         return;
     }
 
-    // Actualizar contadores
-    document.getElementById('totalRegistros').textContent = data.totalRegistros || 0;
+    const lista = data.datos || data.Datos || [];
+    const total = data.totalRegistros || data.TotalRegistros || lista.length;
 
-    // Limpiar tabla
-    tbody.innerHTML = '';
+    if (cntEl) cntEl.textContent = total;
 
-    // Generar Filas
-    datos.forEach((d) => {
-        // Formateo de fecha
-        const fechaObj = d.fechaDecision ? new Date(d.fechaDecision) : null;
-        const fechaStr = fechaObj ? fechaObj.toLocaleDateString('es-DO', { year: 'numeric', month: 'short', day: 'numeric' }) : 'S/F';
+    if (lista.length === 0) {
+        empty.classList.remove('hidden');
+        return;
+    }
+    empty.classList.add('hidden');
 
-        // Crear TR Element
+    lista.forEach(d => {
+        const fechaObj = d.fechaDecision || d.FechaDecision
+            ? new Date(d.fechaDecision || d.FechaDecision) : null;
+        const fechaStr = fechaObj
+            ? fechaObj.toLocaleDateString('es-DO', { year: 'numeric', month: 'short', day: 'numeric' })
+            : 'S/F';
+
+        const url = d.urlDocumentoFirmado || d.UrlDocumentoFirmado || '';
         const tr = document.createElement('tr');
         tr.className = 'hover:bg-slate-50 transition-colors group';
-
         tr.innerHTML = `
             <td class="p-5 align-top">
                 <div class="flex flex-col">
-                    <span class="text-indigo-600 font-mono font-bold text-sm mb-1">${d.numeroDecision || 'N/A'}</span>
+                    <span class="text-indigo-600 font-mono font-bold text-sm mb-1">${d.numeroDecision || d.NumeroDecision || 'N/A'}</span>
                     <span class="text-slate-500 text-xs">${fechaStr}</span>
                 </div>
             </td>
-            
             <td class="p-5 align-top">
-                <div class="max-w-md">
-                    <p class="text-slate-800 font-medium text-sm leading-relaxed line-clamp-2 group-hover:text-indigo-900 transition-colors" title="${d.asunto || ''}">
-                        ${d.asunto || 'Sin asunto especificado'}
-                    </p>
+                <p class="text-slate-800 font-medium text-sm leading-relaxed line-clamp-2" title="${d.asunto || d.Asunto || ''}">
+                    ${d.asunto || d.Asunto || 'Sin asunto especificado'}
+                </p>
+            </td>
+            <td class="p-5 align-top">
+                <div class="flex flex-col gap-1 text-xs text-slate-500">
+                    <span><i class="fas fa-landmark mr-1 text-slate-300"></i>${d.tribunal || d.Tribunal || 'N/A'}</span>
+                    ${(d.materia || d.Materia) ? `<span class="px-2 py-0.5 rounded-md bg-slate-100 border border-slate-200 inline-block w-fit">${d.materia || d.Materia}</span>` : ''}
                 </div>
             </td>
-
-            <td class="p-5 align-top">
-                <div class="flex flex-col gap-2">
-                    <div class="flex items-start text-xs text-slate-500">
-                        <i class="fas fa-landmark mt-0.5 mr-2 w-4 text-center text-slate-400"></i>
-                        <span>${d.tribunal || 'Tribunal no listado'}</span>
-                    </div>
-                    ${d.materia ? `
-                    <div class="flex items-center text-xs text-slate-500">
-                        <i class="fas fa-book mt-0.5 mr-2 w-4 text-center text-slate-400"></i>
-                        <span class="px-2 py-0.5 rounded-md bg-slate-100 border border-slate-200 text-slate-600 font-medium">
-                            ${d.materia}
-                        </span>
-                    </div>` : ''}
-                </div>
-            </td>
-
-            <td class="p-5 align-middle text-right">
-                ${d.urlDocumentoFirmado ? `
-                    <a href="${d.urlDocumentoFirmado}" target="_blank" 
-                       class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all border border-indigo-100 shadow-sm"
-                       title="Ver Sentencia">
-                       <i class="fas fa-file-pdf"></i>
-                    </a>
-                ` : `
-                    <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200">
-                        <i class="fas fa-lock text-xs"></i>
-                    </span>
-                `}
+            <td class="p-5 text-right align-middle">
+                ${url
+                ? `<a href="${url}" target="_blank" class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all border border-indigo-100 shadow-sm" title="Ver Sentencia">
+                           <i class="fas fa-file-pdf"></i>
+                       </a>`
+                : `<span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200">
+                           <i class="fas fa-lock text-xs"></i>
+                       </span>`}
             </td>
         `;
-
         tbody.appendChild(tr);
     });
 
-    // Renderizar Paginación
-    generarPaginacionModern(data);
-
-    // Mostrar contenedor
-    document.getElementById('resultados').classList.remove('hidden');
+    // Paginación
+    const pagActual = data.paginaActual || data.PaginaActual || 1;
+    const totalPags = data.totalPaginas || data.TotalPaginas || 1;
+    renderPaginacion('pag-dec', 'pag-dec-info', pagActual, totalPags, total, 'decisiones');
 }
 
-/**
- * Paginación estilo Dots / Minimal
- */
-function generarPaginacionModern(data) {
-    const actual = data.paginaActual || 1;
-    const total = data.totalPaginas || 1;
-    const contenedor = document.getElementById('paginacion');
-    const contenedorBottom = document.getElementById('paginacionBottom');
+function renderCasos(data) {
+    const tbody = document.getElementById('tabla-casos');
+    const empty = document.getElementById('empty-casos');
+    const errDiv = document.getElementById('error-casos');
+    const errMsg = document.getElementById('error-casos-msg');
+    const cntEl = document.getElementById('cnt-casos');
 
-    // Lógica simple de botones Prev/Next
-    const htmlBotones = `
-        <button onclick="buscar(${actual - 1})" ${actual === 1 ? 'disabled class="opacity-30 cursor-not-allowed"' : ''} class="w-8 h-8 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center transition-colors text-slate-600 shadow-sm">
+    tbody.innerHTML = '';
+    empty.classList.add('hidden');
+    errDiv.classList.add('hidden');
+
+    // API error
+    if (!data || data.error) {
+        errDiv.classList.remove('hidden');
+        if (errMsg) errMsg.textContent = data && data.error ? data.error : 'La API no devolvió una respuesta válida.';
+        if (cntEl) cntEl.textContent = '0';
+        return;
+    }
+
+    // La API puede devolver un array directamente o un objeto con datos
+    let lista = [];
+    if (Array.isArray(data)) {
+        lista = data;
+    } else {
+        lista = data.datos || data.Datos || data.data || data.Data || [];
+        if (!Array.isArray(lista)) lista = [];
+    }
+
+    const total = lista.length;
+    if (cntEl) cntEl.textContent = total;
+
+    if (total === 0) {
+        empty.classList.remove('hidden');
+        return;
+    }
+
+    lista.forEach(c => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50 transition-colors';
+        const nuc = c.nuc || c.Nuc || c.numeroExpediente || c.NumeroExpediente || 'N/A';
+        const tipo = c.tipo || c.Tipo || c.tipoCaso || c.TipoCaso || 'N/A';
+        const mat = c.materia || c.Materia || '—';
+        const trib = c.tribunal || c.Tribunal || c.juzgado || c.Juzgado || 'N/A';
+        const est = c.estado || c.Estado || c.estatus || c.Estatus || 'N/A';
+
+        tr.innerHTML = `
+            <td class="p-5 align-top">
+                <span class="font-mono font-bold text-indigo-600 text-sm">${nuc}</span>
+            </td>
+            <td class="p-5 align-top text-sm text-slate-700">
+                <span class="font-medium">${tipo}</span>
+                ${mat !== '—' ? `<br><span class="text-xs text-slate-400">${mat}</span>` : ''}
+            </td>
+            <td class="p-5 align-top text-sm text-slate-600">
+                <i class="fas fa-landmark mr-1 text-slate-300 text-xs"></i>${trib}
+            </td>
+            <td class="p-5 align-top">
+                <span class="px-2.5 py-1 rounded-full text-xs font-semibold ${estadoBadge(est)}">${est}</span>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+
+    renderPaginacion('pag-cas', 'pag-cas-info', 1, 1, total, 'casos');
+}
+
+function renderAudiencias(data) {
+    const tbody = document.getElementById('tabla-audiencias');
+    const empty = document.getElementById('empty-audiencias');
+    const errDiv = document.getElementById('error-audiencias');
+    const errMsg = document.getElementById('error-audiencias-msg');
+    const cntEl = document.getElementById('cnt-audiencias');
+
+    tbody.innerHTML = '';
+    empty.classList.add('hidden');
+    errDiv.classList.add('hidden');
+
+    // API error
+    if (!data || data.error) {
+        errDiv.classList.remove('hidden');
+        if (errMsg) errMsg.textContent = data && data.error ? data.error : 'La API no devolvió una respuesta válida.';
+        if (cntEl) cntEl.textContent = '0';
+        return;
+    }
+
+    // Respuesta: { data: [...] }  o array directo
+    let lista = [];
+    if (Array.isArray(data)) lista = data;
+    else if (Array.isArray(data.data)) lista = data.data;
+    else {
+        lista = data.datos || data.Datos || [];
+        if (!Array.isArray(lista)) lista = [];
+    }
+
+    const total = lista.length;
+    if (cntEl) cntEl.textContent = total;
+
+    if (total === 0) { empty.classList.remove('hidden'); return; }
+
+    lista.forEach(a => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50 transition-colors align-top';
+
+        const fechaLet = a.fechaAudienciaLetra || '';
+        const hora = a.horaAudiencia || '';
+        const tipo = a.tipoAudiencia || 'N/A';
+        const tribunal = a.tribunal || 'N/A';
+        const sala = a.sala || '';
+        const salon = a.salon || '';
+        const modalidad = a.modalidad || '';
+        const estado = a.estado || a.tipoResultado || 'N/A';
+        const urlAud = a.urlAudiencia || '';
+        const urlCel = a.urlCelebracion || '';
+        const asunto = a.asunto || '';
+
+        tr.innerHTML = `
+            <td class="p-4">
+                <p class="font-semibold text-slate-800 text-sm">${fechaLet || a.fechaAudiencia || 'S/F'}</p>
+                <p class="text-xs text-slate-400 mt-0.5">${hora}</p>
+                ${modalidad ? `<span class="mt-1 inline-block px-2 py-0.5 rounded-md text-xs font-medium bg-blue-50 text-blue-600 border border-blue-100">${modalidad}</span>` : ''}
+            </td>
+            <td class="p-4">
+                <p class="font-semibold text-slate-700 text-sm">${tipo}</p>
+                ${asunto ? `<p class="text-xs text-slate-400 mt-0.5 max-w-xs line-clamp-2" title="${asunto}">${asunto}</p>` : ''}
+            </td>
+            <td class="p-4 text-sm text-slate-600">
+                <p>${tribunal}</p>
+                ${sala ? `<p class="text-xs text-slate-400">${sala}</p>` : ''}
+                ${salon ? `<p class="text-xs text-slate-400">${salon}</p>` : ''}
+            </td>
+            <td class="p-4">
+                <span class="px-2.5 py-1 rounded-full text-xs font-semibold ${estadoBadge(estado)}">${estado}</span>
+            </td>
+            <td class="p-4 text-right space-x-2">
+                ${urlAud ? `<a href="${urlAud}" target="_blank" title="Ver audiencia"
+                    class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all border border-indigo-100 text-xs">
+                    <i class="fas fa-external-link-alt"></i></a>` : ''}
+                ${urlCel ? `<a href="${urlCel}" target="_blank" title="Unirse a celebración"
+                    class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 hover:bg-emerald-600 hover:text-white transition-all border border-emerald-100 text-xs">
+                    <i class="fas fa-video"></i></a>` : ''}
+                ${!urlAud && !urlCel ? `<span class="text-slate-300 text-xs">—</span>` : ''}
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+
+    renderPaginacion('pag-aud', 'pag-aud-info', 1, 1, total, 'audiencias');
+}
+
+// ---- Helpers ----
+function estadoBadge(est) {
+    const e = (est || '').toLowerCase();
+    if (e.includes('activ') || e.includes('pend')) return 'bg-amber-50 text-amber-700 border border-amber-200';
+    if (e.includes('termin') || e.includes('cerr')) return 'bg-emerald-50 text-emerald-700 border border-emerald-200';
+    if (e.includes('cancel') || e.includes('arch')) return 'bg-slate-100 text-slate-500 border border-slate-200';
+    return 'bg-blue-50 text-blue-700 border border-blue-200';
+}
+
+function renderPaginacion(containerId, infoId, actual, total, totalReg, seccion) {
+    const el = document.getElementById(containerId);
+    const info = document.getElementById(infoId);
+    if (!el) return;
+    if (info) info.textContent = `${totalReg} registro${totalReg !== 1 ? 's' : ''}`;
+    if (total <= 1) { el.innerHTML = ''; return; }
+
+    el.innerHTML = `
+        <button onclick="buscar(${actual - 1})" ${actual === 1 ? 'disabled class="opacity-30 cursor-not-allowed"' : ''}
+            class="w-8 h-8 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center text-slate-600 shadow-sm transition-colors">
             <i class="fas fa-chevron-left text-xs"></i>
         </button>
         <span class="text-sm text-slate-500 font-medium self-center px-3 border border-slate-200 rounded-lg bg-white h-8 flex items-center shadow-sm mx-1">${actual} / ${total}</span>
-        <button onclick="buscar(${actual + 1})" ${actual === total ? 'disabled class="opacity-30 cursor-not-allowed"' : ''} class="w-8 h-8 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center transition-colors text-slate-600 shadow-sm">
+        <button onclick="buscar(${actual + 1})" ${actual === total ? 'disabled class="opacity-30 cursor-not-allowed"' : ''}
+            class="w-8 h-8 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center text-slate-600 shadow-sm transition-colors">
             <i class="fas fa-chevron-right text-xs"></i>
         </button>
     `;
-
-    if (contenedor) contenedor.innerHTML = htmlBotones;
-    if (contenedorBottom) contenedorBottom.innerHTML = htmlBotones;
 }
 
 function mostrarError(msg) {
-    const errorDiv = document.getElementById('error');
     document.getElementById('errorMsg').textContent = msg;
-    errorDiv.classList.remove('hidden');
+    document.getElementById('error').classList.remove('hidden');
 }
 
 // Init
