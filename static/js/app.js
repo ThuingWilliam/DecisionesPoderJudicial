@@ -75,14 +75,18 @@ async function buscar(pagina = 1) {
         const nucBadge = document.getElementById('nucBadge');
         if (nucBadge) nucBadge.textContent = nuc;
 
-        // Resumen totales
-        const totalDec = (data.decisiones && data.decisiones.totalRegistros) || 0;
-        const totalCas = (data.casos && data.casos.totalRegistros) || (data.casos && Array.isArray(data.casos) && data.casos.length) || 0;
-        const totalAud = (data.audiencias && data.audiencias.totalRegistros) || (data.audiencias && Array.isArray(data.audiencias) && data.audiencias.length) || 0;
+        // Resumen totales — leer los badges DESPUÉS de que los renderers los actualicen
+        const totalDec = parseInt(document.getElementById('cnt-decisiones')?.textContent) || 0;
+        const totalCas = parseInt(document.getElementById('cnt-casos')?.textContent) || 0;
+        const totalAud = parseInt(document.getElementById('cnt-audiencias')?.textContent) || 0;
 
-        if (document.getElementById('resumenTotal')) {
-            document.getElementById('resumenTotal').textContent =
-                `${totalDec} decisiones · ${totalCas} casos · ${totalAud} audiencias`;
+        const resumen = document.getElementById('resumenTotal');
+        if (resumen) {
+            resumen.innerHTML = [
+                `<span class="font-semibold text-slate-700">${totalDec}</span> decisiones`,
+                `<span class="font-semibold text-slate-700">${totalCas}</span> casos`,
+                `<span class="font-semibold text-slate-700">${totalAud}</span> audiencias`
+            ].join(' &middot; ');
         }
 
         // Verificar si hay al menos algo
@@ -317,14 +321,24 @@ function renderAudiencias(data) {
             <td class="p-4">
                 <span class="px-2.5 py-1 rounded-full text-xs font-semibold ${estadoBadge(estado)}">${estado}</span>
             </td>
-            <td class="p-4 text-right space-x-2">
-                ${urlAud ? `<a href="${urlAud}" target="_blank" title="Ver audiencia"
-                    class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all border border-indigo-100 text-xs">
-                    <i class="fas fa-external-link-alt"></i></a>` : ''}
-                ${urlCel ? `<a href="${urlCel}" target="_blank" title="Unirse a celebración"
-                    class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 hover:bg-emerald-600 hover:text-white transition-all border border-emerald-100 text-xs">
-                    <i class="fas fa-video"></i></a>` : ''}
-                ${!urlAud && !urlCel ? `<span class="text-slate-300 text-xs">—</span>` : ''}
+            <td class="p-4 text-right">
+                <div class="flex flex-col items-end gap-2">
+                    <div class="flex gap-2">
+                        ${urlAud ? `<a href="${urlAud}" target="_blank"
+                            class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-indigo-50 text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all border border-indigo-100 text-xs font-medium">
+                            <i class="fas fa-external-link-alt"></i> Ver audiencia
+                        </a>` : ''}
+                        ${urlCel ? `<a href="${urlCel}" target="_blank"
+                            class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-600 hover:bg-emerald-600 hover:text-white transition-all border border-emerald-100 text-xs font-medium">
+                            <i class="fas fa-video"></i> Unirse
+                        </a>` : ''}
+                        ${!urlAud && !urlCel ? `<span class="text-slate-300 text-xs">&mdash;</span>` : ''}
+                    </div>
+                    ${(urlAud || urlCel) ? `<p class="text-xs text-amber-500 flex items-center gap-1">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Disponible solo el d&iacute;a de la audiencia
+                    </p>` : ''}
+                </div>
             </td>
         `;
         tbody.appendChild(tr);
