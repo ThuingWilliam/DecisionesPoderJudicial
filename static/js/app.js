@@ -275,8 +275,8 @@ function renderCasos(data) {
                     <span class="font-bold text-slate-800 leading-tight">${trib}</span>
                 </div>
             </td>
-            <td class="p-5 align-top">
-                <span class="px-2.5 py-1 rounded-full text-xs font-semibold ${estadoBadge(est)}">${est}</span>
+            <td class="p-5 align-top text-center whitespace-nowrap">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${estadoBadge(est)}">${est}</span>
             </td>
         `;
         tbody.appendChild(tr);
@@ -364,8 +364,8 @@ function renderAudiencias(data) {
                     ${salon ? `<p class="text-[11px] text-slate-400 flex items-center gap-1"><i class="fas fa-door-open text-[10px]"></i> ${salon}</p>` : ''}
                 </div>
             </td>
-            <td class="p-4">
-                <span class="px-2.5 py-1 rounded-full text-xs font-semibold ${estadoBadge(estado)}">${estado}</span>
+            <td class="p-4 text-center whitespace-nowrap">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${estadoBadge(estado)}">${estado}</span>
             </td>
             <td class="p-4 text-right space-x-2 whitespace-nowrap">
                 ${urlAud ? `<a href="${urlAud}" target="_blank" title="${note}"

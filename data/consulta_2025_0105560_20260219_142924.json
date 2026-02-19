@@ -1,0 +1,223 @@
+{
+  "nuc_consultado": "2025-0105560",
+  "fecha_consulta": "2026-02-19T14:29:24.298597",
+  "respuesta_api": {
+    "success": true,
+    "nuc": "2025-0105560",
+    "decisiones": {
+      "paginaActual": 1,
+      "totalPaginas": 1,
+      "registrosPorPagina": 15,
+      "totalRegistros": 2,
+      "datos": [
+        {
+          "asunto": "ACUSACIÓN",
+          "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+          "nuc": "2025-0105560",
+          "numeroDecision": "063-2025-SRES-00699",
+          "fechaDecision": "2025-12-10T00:00:00",
+          "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/2025-0105560%2C Luis Betance Ferreras%2C Apertura a juicio-1768071650561_Signed_1768225166.pdf",
+          "materia": "PENAL",
+          "sala": "SEPTIMO JUZGADO DE LA INSTRUCCIÓN DEL DISTRITO NACIONAL",
+          "tribunal": "JUZGADO DE LA INSTRUCCION DEL DISTRITO NACIONAL",
+          "tipoFallo": "Auto de apertura a juicio",
+          "tipoDocumento": "Resolución"
+        },
+        {
+          "asunto": "MEDIDA DE COERCIÓN",
+          "categoriaTribunal": "PRIMERA INSTANCIA Y EQUIVALENTES",
+          "nuc": "2025-0105560",
+          "numeroDecision": "0668-2025-SMDC-00837",
+          "fechaDecision": "2025-04-30T04:00:00",
+          "urlDocumentoFirmado": "https://sjdeposito.blob.core.windows.net/documentoslocales/be229952-d1f3-464b-abf0-dab8cf0e7b4e_20250502130047832_Signed_1746208596.pdf",
+          "materia": "PENAL",
+          "sala": "OFICINA JUDICIAL DE SERVICIOS DE ATENCION PERMANENTE DEL DISTRITO NACIONAL",
+          "tribunal": "JUZGADO DE LA INSTRUCCION DEL DISTRITO NACIONAL",
+          "tipoFallo": "Acoge",
+          "tipoDocumento": "Resolución"
+        }
+      ]
+    },
+    "casos": {
+      "message": "Resultados para el caso: 2025-0105560",
+      "data": [
+        {
+          "nuc": "2025-0105560",
+          "numeroTramite": "2025-0105560-002",
+          "numeroSolicitud": "2025-R0434549",
+          "asunto": "Revisión De Medida De Coerción",
+          "materia": "PENAL",
+          "tribunal": "Juzgado De La Instruccion Del ",
+          "sala": "Sexto Juzgado De La Instrucció",
+          "fecha": "6 de mayo del 2025",
+          "estado": "Finalizado",
+          "referencia": "Trámite Interpuesto Por:  Toma",
+          "resultadoAudiencia": "No disponible"
+        },
+        {
+          "nuc": "2025-0105560",
+          "numeroTramite": "2025-0105560-004",
+          "numeroSolicitud": "2025-R1180857",
+          "asunto": "Escrito De Defensa",
+          "materia": "PENAL",
+          "tribunal": "Juzgado De La Instruccion Del ",
+          "sala": "Septimo Juzgado De La Instrucc",
+          "fecha": "4 de noviembre del 2025",
+          "estado": "Finalizado",
+          "referencia": "Trámite Interpuesto Por: N/d V",
+          "resultadoAudiencia": "No disponible"
+        },
+        {
+          "nuc": "2025-0105560",
+          "numeroTramite": "2025-0105560-001",
+          "numeroSolicitud": "2025-R0415358",
+          "asunto": "Medida De Coerción",
+          "materia": "PENAL",
+          "tribunal": "Juzgado De La Instruccion Del ",
+          "sala": "Oficina Judicial De Servicios ",
+          "fecha": "29 de abril del 2025",
+          "estado": "Audiencia fijada sin celebrar para el 30 de abril del 2025",
+          "referencia": "Trámite Interpuesto Por:  Toma",
+          "resultadoAudiencia": "No disponible"
+        },
+        {
+          "nuc": "2025-0105560",
+          "numeroTramite": "2025-0105560-005",
+          "numeroSolicitud": "2026-R0056732",
+          "asunto": "Acción Penal Pública",
+          "materia": "PENAL",
+          "tribunal": "Camara Penal Del Juzgado De Pr",
+          "sala": "Segunda Sala De La Camara Pena",
+          "fecha": "23 de enero del 2026",
+          "estado": "Audiencia fijada para el 26 de febrero del 2026",
+          "referencia": "Trámite Interpuesto Por:  Widr",
+          "resultadoAudiencia": "No disponible"
+        },
+        {
+          "nuc": "2025-0105560",
+          "numeroTramite": "2025-0105560-003",
+          "numeroSolicitud": "2025-R1048522",
+          "asunto": "Acusación",
+          "materia": "PENAL",
+          "tribunal": "Juzgado De La Instruccion Del ",
+          "sala": "Septimo Juzgado De La Instrucc",
+          "fecha": "1 de octubre del 2025",
+          "estado": "Audiencia celebrada el 12 de enero del 2026",
+          "referencia": "Trámite Interpuesto Por:  Toma",
+          "resultadoAudiencia": "Leida"
+        }
+      ]
+    },
+    "audiencias": {
+      "data": [
+        {
+          "nuc": "2025-0105560",
+          "numeroTramite": "2025-0105560-001",
+          "asunto": "Medida De Coerción",
+          "tribunal": "Juzgado De La Instruccion Del ",
+          "sala": "Oficina Judicial De Servicios ",
+          "salon": "Salón Atención Permanente 217",
+          "tipoAudiencia": "Medida de Coerción",
+          "estado": "Fijada",
+          "urlAudiencia": "No disponible",
+          "urlCelebracion": "No disponible",
+          "fechaAudiencia": "2025-04-30T09:00:00",
+          "horaAudiencia": "9:00 AM",
+          "modalidad": "Presencial",
+          "fechaAudienciaLetra": "30 de abril del 2025",
+          "tipoResultado": "Aplazada"
+        },
+        {
+          "nuc": "2025-0105560",
+          "numeroTramite": "2025-0105560-003",
+          "asunto": "Acusación",
+          "tribunal": "Juzgado De La Instruccion Del ",
+          "sala": "Septimo Juzgado De La Instrucc",
+          "salon": "en la puerta 208",
+          "tipoAudiencia": "Preliminar",
+          "estado": "Celebrada",
+          "urlAudiencia": "No disponible",
+          "urlCelebracion": "No disponible",
+          "fechaAudiencia": "2025-11-06T09:00:00",
+          "horaAudiencia": "9:00 AM",
+          "modalidad": "Presencial",
+          "fechaAudienciaLetra": "6 de noviembre del 2025",
+          "tipoResultado": "Fallada"
+        },
+        {
+          "nuc": "2025-0105560",
+          "numeroTramite": "2025-0105560-003",
+          "asunto": "Acusación",
+          "tribunal": "Juzgado De La Instruccion Del ",
+          "sala": "Septimo Juzgado De La Instrucc",
+          "salon": "en la puerta 208",
+          "tipoAudiencia": "Preliminar",
+          "estado": "Celebrada",
+          "urlAudiencia": "No disponible",
+          "urlCelebracion": "No disponible",
+          "fechaAudiencia": "2025-11-19T09:00:00",
+          "horaAudiencia": "9:00 AM",
+          "modalidad": "Presencial",
+          "fechaAudienciaLetra": "19 de noviembre del 2025",
+          "tipoResultado": "No disponible"
+        },
+        {
+          "nuc": "2025-0105560",
+          "numeroTramite": "2025-0105560-003",
+          "asunto": "Acusación",
+          "tribunal": "Juzgado De La Instruccion Del ",
+          "sala": "Septimo Juzgado De La Instrucc",
+          "salon": "en la puerta 208",
+          "tipoAudiencia": "Preliminar",
+          "estado": "Celebrada",
+          "urlAudiencia": "No disponible",
+          "urlCelebracion": "No disponible",
+          "fechaAudiencia": "2025-12-10T09:00:00",
+          "horaAudiencia": "9:00 AM",
+          "modalidad": "Presencial",
+          "fechaAudienciaLetra": "10 de diciembre del 2025",
+          "tipoResultado": "No disponible"
+        },
+        {
+          "nuc": "2025-0105560",
+          "numeroTramite": "2025-0105560-003",
+          "asunto": "Acusación",
+          "tribunal": "Juzgado De La Instruccion Del ",
+          "sala": "Septimo Juzgado De La Instrucc",
+          "salon": "en la puerta 208",
+          "tipoAudiencia": "Lectura de fallo",
+          "estado": "Celebrada",
+          "urlAudiencia": "No disponible",
+          "urlCelebracion": "No disponible",
+          "fechaAudiencia": "2026-01-12T09:00:00",
+          "horaAudiencia": "9:00 AM",
+          "modalidad": "Presencial",
+          "fechaAudienciaLetra": "12 de enero del 2026",
+          "tipoResultado": "No disponible"
+        },
+        {
+          "nuc": "2025-0105560",
+          "numeroTramite": "2025-0105560-005",
+          "asunto": "Acción Penal Pública",
+          "tribunal": "Camara Penal Del Juzgado De Pr",
+          "sala": "Segunda Sala De La Camara Pena",
+          "salon": "En la puerta 305",
+          "tipoAudiencia": "Juicio",
+          "estado": "Fijada",
+          "urlAudiencia": "No disponible",
+          "urlCelebracion": "No disponible",
+          "fechaAudiencia": "2026-02-26T09:00:00",
+          "horaAudiencia": "9:00 AM",
+          "modalidad": "Presencial",
+          "fechaAudienciaLetra": "26 de febrero del 2026",
+          "tipoResultado": "No disponible"
+        }
+      ]
+    },
+    "debug": {
+      "decisiones_status": 200,
+      "casos_status": 200,
+      "audiencias_status": 200
+    }
+  }
+}
