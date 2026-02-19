@@ -367,16 +367,22 @@ function renderAudiencias(data) {
             <td class="p-4 text-center whitespace-nowrap">
                 <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${estadoBadge(estado)}">${estado}</span>
             </td>
-            <td class="p-4 text-right space-x-2 whitespace-nowrap">
-                ${urlAud ? `<a href="${urlAud}" target="_blank" title="${note}"
-                    class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all border border-indigo-100 text-xs">
-                    <i class="fas fa-external-link-alt"></i></a>` : ''}
-                ${urlCel ? `<a href="${urlCel}" target="_blank" title="${note}"
-                    class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 hover:bg-emerald-600 hover:text-white transition-all border border-emerald-100 text-xs">
-                    <i class="fas fa-video"></i></a>` : ''}
-                ${!urlAud && !urlCel ? `<span class="text-slate-300 text-xs">—</span>` : `
-                    <p class="text-[10px] text-slate-400 mt-1 italic leading-none" style="max-width: 80px; margin-left: auto;">*Activo solo el día de la cita</p>
-                `}
+            <td class="p-4 text-right">
+                <div class="flex flex-col items-end gap-2">
+                    <div class="flex gap-2">
+                        ${urlAud ? `<a href="${urlAud}" target="_blank" title="${note}"
+                            class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all border border-indigo-100 shadow-sm">
+                            <i class="fas fa-external-link-alt"></i></a>` : ''}
+                        ${urlCel ? `<a href="${urlCel}" target="_blank" title="${note}"
+                            class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 hover:bg-emerald-600 hover:text-white transition-all border border-emerald-100 shadow-sm">
+                            <i class="fas fa-video"></i></a>` : ''}
+                    </div>
+                    ${!urlAud && !urlCel ? `<span class="text-slate-300 text-xs px-4">—</span>` : `
+                        <p class="text-[10px] text-slate-400 font-medium italic leading-tight text-right max-w-[120px]">
+                            <i class="fas fa-info-circle mr-1 text-[9px] opacity-70"></i>Activo solo el día de la cita
+                        </p>
+                    `}
+                </div>
             </td>
         `;
         tbody.appendChild(tr);
