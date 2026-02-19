@@ -137,6 +137,14 @@ function renderDecisiones(data) {
     }
 
     const lista = data.datos || data.Datos || [];
+
+    // Ordenar por fecha (más reciente primero)
+    lista.sort((a, b) => {
+        const d1 = new Date(a.fechaDecision || a.FechaDecision || 0);
+        const d2 = new Date(b.fechaDecision || b.FechaDecision || 0);
+        return d2 - d1;
+    });
+
     const total = data.totalRegistros || data.TotalRegistros || lista.length;
 
     if (cntEl) cntEl.textContent = total;
@@ -165,12 +173,12 @@ function renderDecisiones(data) {
                 </div>
             </td>
             <td class="p-5 align-top">
-                <p class="text-slate-800 font-medium text-sm leading-relaxed line-clamp-2" title="${d.asunto || d.Asunto || ''}">
+                <p class="text-slate-800 font-medium text-sm leading-relaxed whitespace-normal break-words" title="${d.asunto || d.Asunto || ''}">
                     ${d.asunto || d.Asunto || 'Sin asunto especificado'}
                 </p>
             </td>
-            <td class="p-5 align-top">
-                <div class="flex flex-col gap-1 text-xs text-slate-500">
+            <td class="p-5 align-top text-sm text-slate-600 whitespace-normal break-words">
+                <div class="flex flex-col gap-1">
                     <span><i class="fas fa-landmark mr-1 text-slate-300"></i>${d.tribunal || d.Tribunal || 'N/A'}</span>
                     ${(d.materia || d.Materia) ? `<span class="px-2 py-0.5 rounded-md bg-slate-100 border border-slate-200 inline-block w-fit">${d.materia || d.Materia}</span>` : ''}
                 </div>
@@ -222,6 +230,18 @@ function renderCasos(data) {
         if (!Array.isArray(lista)) lista = [];
     }
 
+    // Ordenar por NUC (asumiendo formato con año al principio o segunda parte)
+    // Intentamos extraer el año del NUC para ordenar
+    lista.sort((a, b) => {
+        const getYear = (str) => {
+            const m = (str || '').match(/\d{4}/);
+            return m ? parseInt(m[0]) : 0;
+        };
+        const n1 = a.nuc || a.Nuc || '';
+        const n2 = b.nuc || b.Nuc || '';
+        return getYear(n2) - getYear(n1);
+    });
+
     const total = data.totalRegistros || data.TotalRegistros || lista.length;
     if (cntEl) cntEl.textContent = total;
 
@@ -243,11 +263,11 @@ function renderCasos(data) {
             <td class="p-5 align-top">
                 <span class="font-mono font-bold text-indigo-600 text-sm">${nuc}</span>
             </td>
-            <td class="p-5 align-top text-sm text-slate-700">
+            <td class="p-5 align-top text-sm text-slate-700 whitespace-normal break-words">
                 <span class="font-medium">${tipo}</span>
                 ${mat !== '—' ? `<br><span class="text-xs text-slate-400">${mat}</span>` : ''}
             </td>
-            <td class="p-5 align-top text-sm text-slate-600">
+            <td class="p-5 align-top text-sm text-slate-600 whitespace-normal break-words">
                 <i class="fas fa-landmark mr-1 text-slate-300 text-xs"></i>${trib}
             </td>
             <td class="p-5 align-top">
@@ -290,6 +310,13 @@ function renderAudiencias(data) {
         if (!Array.isArray(lista)) lista = [];
     }
 
+    // Ordenar por fecha (más reciente primero)
+    lista.sort((a, b) => {
+        const d1 = a.fechaAudiencia ? new Date(a.fechaAudiencia) : new Date(0);
+        const d2 = b.fechaAudiencia ? new Date(b.fechaAudiencia) : new Date(0);
+        return d2 - d1;
+    });
+
     const total = data.totalRegistros || data.TotalRegistros || lista.length;
     if (cntEl) cntEl.textContent = total;
 
@@ -320,13 +347,13 @@ function renderAudiencias(data) {
                 ${modalidad ? `<span class="mt-1 inline-block px-2 py-0.5 rounded-md text-xs font-medium bg-blue-50 text-blue-600 border border-blue-100">${modalidad}</span>` : ''}
             </td>
             <td class="p-4">
-                <p class="font-semibold text-slate-700 text-sm">${tipo}</p>
-                ${asunto ? `<p class="text-xs text-slate-400 mt-0.5 max-w-xs line-clamp-2" title="${asunto}">${asunto}</p>` : ''}
+                <p class="font-semibold text-slate-700 text-sm whitespace-normal break-words">${tipo}</p>
+                ${asunto ? `<p class="text-xs text-slate-400 mt-0.5 max-w-sm whitespace-normal break-words" title="${asunto}">${asunto}</p>` : ''}
             </td>
-            <td class="p-4 text-sm text-slate-600">
-                <p>${tribunal}</p>
-                ${sala ? `<p class="text-xs text-slate-400">${sala}</p>` : ''}
-                ${salon ? `<p class="text-xs text-slate-400">${salon}</p>` : ''}
+            <td class="p-4 text-sm text-slate-600 whitespace-normal break-words">
+                <p class="font-medium">${tribunal}</p>
+                ${sala ? `<p class="text-xs text-slate-400 font-medium mt-1">${sala}</p>` : ''}
+                ${salon ? `<p class="text-xs text-slate-400 mt-0.5">${salon}</p>` : ''}
             </td>
             <td class="p-4">
                 <span class="px-2.5 py-1 rounded-full text-xs font-semibold ${estadoBadge(estado)}">${estado}</span>
